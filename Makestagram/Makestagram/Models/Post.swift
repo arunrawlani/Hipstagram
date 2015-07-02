@@ -44,10 +44,10 @@ class Post : PFObject, PFSubclassing{
         //Get photo from image property and change it to a PFFile and then upload
         let imageData = UIImageJPEGRepresentation(image, 0.8)
         let imageFile = PFFile(data: imageData)
-        imageFile.save()
+        imageFile.saveInBackgroundWithBlock(nil)
         
         //
         self.imageFile = imageFile
-        save()
+        saveInBackgroundWithBlock(nil)
     }
 }
