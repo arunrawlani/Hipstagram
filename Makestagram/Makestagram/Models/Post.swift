@@ -46,8 +46,9 @@ class Post : PFObject, PFSubclassing{
         let imageFile = PFFile(data: imageData)
         imageFile.saveInBackgroundWithBlock(nil)
         
-        //
+        //any post should be associated with a user
+        user = PFUser.currentUser()
         self.imageFile = imageFile
-        saveInBackgroundWithBlock(nil)
+        saveInBackgroundWithBlock(nil) //the nil refers to a callback that can execute code once upload is done
     }
 }
