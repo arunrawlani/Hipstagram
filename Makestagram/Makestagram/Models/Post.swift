@@ -14,6 +14,7 @@ import Parse
 class Post : PFObject, PFSubclassing{
     
     var image : UIImage?
+    var photoUploadTask: UIBackgroundTaskIdentifier?
     
     //Defining each property to access on Parse.
     @NSManaged var imageFile: PFFile?
@@ -45,6 +46,21 @@ class Post : PFObject, PFSubclassing{
         let imageData = UIImageJPEGRepresentation(image, 0.8)
         let imageFile = PFFile(data: imageData)
         imageFile.saveInBackgroundWithBlock(nil)
+       
+        //As soon as photo gets uploaded start background task
+        //API requires to provide expiration handler in form of closure
+        photoUploadTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
+            UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
+            //this is called in case the task is not successful, then we are required to cancel it
+            //and then return the resources we created
+        }
+        
+        // 2
+        imageFile.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            // 3
+            UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
+        }
+        
         
         //any post should be associated with a user
         user = PFUser.currentUser()

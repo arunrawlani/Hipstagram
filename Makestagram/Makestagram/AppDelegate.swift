@@ -20,7 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     Parse.setApplicationId("28yxTFsbjxTVxtm8YbVOehmCFGeg543enkB1woHb", clientKey: "1of5AWjDCb9mr3qNArrD7AMy2mxQZc2yoGZLhxa6")
     
+    let acl = PFACL() //to allow just public read access. Write access limited to current user
+    acl.setPublicReadAccess(true)
+    PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
+    
     PFUser.logInWithUsername("test", password: "test")
+    
+    
     
     if let user = PFUser.currentUser(){
         println("Log in successful")
