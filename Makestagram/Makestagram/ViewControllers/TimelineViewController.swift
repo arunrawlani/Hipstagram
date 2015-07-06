@@ -24,48 +24,20 @@ class TimelineViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //Fetches follow relationships for current users
-        let followingQuery = PFQuery(className: "Follow")
-        followingQuery.whereKey("fromUser", equalTo: PFUser.currentUser()!)
-        
-        //Using previous query to fetch any posts made by followers of currentUser
-        let postsFromFollowedUsers = Post.query()
-        postsFromFollowedUsers!.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
-        
-        //Another query to retunr all posts made by the current user
-        let postsFromThisUser = Post.query()
-        postsFromThisUser!.whereKey("user", equalTo: PFUser.currentUser()!)
-        
-        //creates a query that returns all posts from the previous 2 queries
-        let query = PFQuery.orQueryWithSubqueries([postsFromFollowedUsers!, postsFromThisUser!])
-        //extracting information to display with the post
-        query.includeKey("user")
-        query.includeKey("createdAt")
-        
-        query.findObjectsInBackgroundWithBlock {(result: [AnyObject]?, error: NSError?) -> Void in
             
-            //casts to type Post array or just returns an empty array
-            self.posts = result as? [Post] ?? []
-           
-            //looping over all posts returned by timeline query
-            for post in self.posts {
+            ParseHelper.timelineRequestforCurrentUser {
+                (result: [AnyObject]?, error: NSError?) -> Void in
+                self.posts = result as? [Post] ?? []
                 
-                //using getdata to get the photo. Will shift it to background
-                let data = post.imageFile?.getData()
+                for post in self.posts {
+                    let data = post.imageFile?.getData()
+                    post.image = UIImage(data: data!, scale:1.0)
+                }
                 
-                //Once the data is retrieved and stored, we convert it to UIImage instance and store image 
-                post.image = UIImage(data: data!, scale :1.0)
+                self.tableView.reloadData()
             }
-            
-            
-            
-            
-            
-            //refresh tableView
-            self.tableView.reloadData()
-    }
-    }
+        }
+
 
     func takePhoto(){
         // instantiate photo taking class, provide callback for when photo is selected
