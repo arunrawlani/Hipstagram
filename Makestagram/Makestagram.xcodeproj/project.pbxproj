@@ -44,6 +44,7 @@
 		62C8C1F01B06BD6500DC3EA7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C8C1EE1B06BD6500DC3EA7 /* LaunchScreen.xib */; };
 		62C8C1FC1B06BD6500DC3EA7 /* MakestagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8C1FB1B06BD6500DC3EA7 /* MakestagramTests.swift */; };
 		F1401BBF1B45E93000233D38 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1401BBE1B45E93000233D38 /* Post.swift */; };
+		F18090691B4A1A5E00D909A1 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18090681B4A1A5E00D909A1 /* PostTableViewCell.swift */; };
 		F1A86F231B43509E0008950E /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86F221B43509E0008950E /* TimelineViewController.swift */; };
 		F1A86F291B4351490008950E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86F281B4351490008950E /* PhotoViewController.swift */; };
 		F1A86F2B1B43515D0008950E /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86F2A1B43515D0008950E /* FriendSearchViewController.swift */; };
@@ -187,6 +188,7 @@
 		62C8C1FA1B06BD6500DC3EA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62C8C1FB1B06BD6500DC3EA7 /* MakestagramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakestagramTests.swift; sourceTree = "<group>"; };
 		F1401BBE1B45E93000233D38 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		F18090681B4A1A5E00D909A1 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		F1A86F221B43509E0008950E /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		F1A86F281B4351490008950E /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		F1A86F2A1B43515D0008950E /* FriendSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 		62C8C1E21B06BD6500DC3EA7 /* Makestagram */ = {
 			isa = PBXGroup;
 			children = (
+				F18090611B4A1A3B00D909A1 /* Views */,
 				F1401BB71B45E7CB00233D38 /* Models */,
 				F1A86F2C1B438E1C0008950E /* PhotoTaking */,
 				6277189C1B0A58E800AF5C6E /* Helpers */,
@@ -388,6 +391,14 @@
 				F1401BBE1B45E93000233D38 /* Post.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F18090611B4A1A3B00D909A1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F18090681B4A1A5E00D909A1 /* PostTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F1A86F2C1B438E1C0008950E /* PhotoTaking */ = {
@@ -587,6 +598,7 @@
 				F1A86F291B4351490008950E /* PhotoViewController.swift in Sources */,
 				62C8C1E61B06BD6500DC3EA7 /* AppDelegate.swift in Sources */,
 				627718971B0A581700AF5C6E /* FilterViewController.swift in Sources */,
+				F18090691B4A1A5E00D909A1 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
