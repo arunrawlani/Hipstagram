@@ -47,6 +47,21 @@ class TimelineViewController: UIViewController {
             
             //casts to type Post array or just returns an empty array
             self.posts = result as? [Post] ?? []
+           
+            //looping over all posts returned by timeline query
+            for post in self.posts {
+                
+                //using getdata to get the photo. Will shift it to background
+                let data = post.imageFile?.getData()
+                
+                //Once the data is retrieved and stored, we convert it to UIImage instance and store image 
+                post.image = UIImage(data: data!, scale :1.0)
+            }
+            
+            
+            
+            
+            
             //refresh tableView
             self.tableView.reloadData()
     }
@@ -91,9 +106,13 @@ extension TimelineViewController: UITableViewDataSource{
 
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! UITableViewCell
+    //casting cell to the PostTableViewCell class
+    let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
     //return a simple placeholder cell with title Post
-    cell.textLabel!.text = "Post"
+    
+    //using postImage property of our custom view class we decide which image to display
+    cell.postImageView.image = posts[indexPath.row].image
+    
     
     return cell
     }
