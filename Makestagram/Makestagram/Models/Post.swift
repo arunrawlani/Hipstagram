@@ -8,12 +8,13 @@
 
 import Foundation
 import Parse
+import Bond
 
 
 //to create a subclass, inherit from PFObject and implement PFSubclassing protocol
 class Post : PFObject, PFSubclassing{
     
-    var image : UIImage?
+    var image : Dynamic<UIImage?> = Dynamic(nil)
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
     //Defining each property to access on Parse.
@@ -43,7 +44,7 @@ class Post : PFObject, PFSubclassing{
     
     func uploadPhoto(){
         //Get photo from image property and change it to a PFFile and then upload
-        let imageData = UIImageJPEGRepresentation(image, 0.8)
+        let imageData = UIImageJPEGRepresentation(image.value, 0.8)
         let imageFile = PFFile(data: imageData)
         imageFile.saveInBackgroundWithBlock(nil)
        
@@ -67,4 +68,21 @@ class Post : PFObject, PFSubclassing{
         self.imageFile = imageFile
         saveInBackgroundWithBlock(nil) //the nil refers to a callback that can execute code once upload is done
     }
+    
+    func downloadImage(){
+        //if image is not downloaded yet, get it
+        //We check if value is nil, because images may be downloaded multiple times and a non-nil may give an error
+        if (image.value == nil){
+            
+            // We start the download here in background
+            imageFile?.getDataInBackgroundWithBlock{ (data: NSData?, error: NSError?)-> Void in
+                if let data = data {
+                    
+                    let image = UIImage (data: data, scale: 1.0)!
+                    //once download is complete, we update post.image using the .value as image is dynamic
+                    self.image.value = image
+                }
+        }
+    }
+}
 }

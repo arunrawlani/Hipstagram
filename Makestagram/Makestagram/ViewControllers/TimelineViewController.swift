@@ -29,10 +29,7 @@ class TimelineViewController: UIViewController {
                 (result: [AnyObject]?, error: NSError?) -> Void in
                 self.posts = result as? [Post] ?? []
                 
-                for post in self.posts {
-                    let data = post.imageFile?.getData()
-                    post.image = UIImage(data: data!, scale:1.0)
-                }
+                //downloading only the metadata of all posts upfront and deferring image download until displayed
                 
                 self.tableView.reloadData()
             }
@@ -43,7 +40,7 @@ class TimelineViewController: UIViewController {
         // instantiate photo taking class, provide callback for when photo is selected
         photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!){ (image : UIImage?) in
           let post = Post()
-            post.image = image
+            post.image.value = image
             post.uploadPhoto()
             
             println("Image uploaded. Hips-da-boss!")
