@@ -2,7 +2,7 @@
 //  PhotoTakingHelper.swift
 //  Makestagram
 //
-//  Created by Praynaa Rawlani on 6/30/15.
+//  Created by Arun Rawlani on 6/30/15.
 //  Copyright (c) 2015 Make School. All rights reserved.
 //
 
