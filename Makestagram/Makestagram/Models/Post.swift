@@ -17,6 +17,10 @@ class Post : PFObject, PFSubclassing{
     var image : Dynamic<UIImage?> = Dynamic(nil)
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
+    var likes =  Dynamic<[PFUser]?>(nil)
+    //making likes dynamic so to listen to changes and update UI after downloading lazily
+    //optional because before downloading, this property will be nill
+    
     //Defining each property to access on Parse.
     @NSManaged var imageFile: PFFile?
     @NSManaged var user: PFUser?
@@ -85,4 +89,48 @@ class Post : PFObject, PFSubclassing{
         }
     }
 }
+    
+    func fetchLikes() {
+        //if not nil we used the cached value, until the timeline is refreshed
+        if (likes.value != nil) {
+            return
+        }
+        
+        //fetch likes for current Post using method of ParseHelper created earlier
+        ParseHelper.likesForPost(self, completionBlock: { (var likes: [AnyObject]?, error: NSError?) -> Void in
+            
+            //filter method takes a closure and returns object from original array that meet the requirement stated. So filter to remove likes of users that no longer exist
+            likes = likes?.filter { like in like[ParseHelper.ParseLikeFromUser] != nil }
+            
+             /* maps take a closure that is called for each element and returns a new array as result. However, unlike filter map doesnt remove but replaces objects. We get an array of users from array of likes */
+            self.likes.value = likes?.map { like in
+                let like = like as! PFObject
+                let fromUser = like[ParseHelper.ParseLikeFromUser] as! PFUser
+                
+                return fromUser
+            }
+        })
+    }
+    
+    func doesUserLikePost(user: PFUser) -> Bool {
+        if let likes = likes.value {
+            return contains(likes, user)
+        } else {
+            return false
+        }
+    }
+    
+    func toggleLikePost(user: PFUser){
+        if (doesUserLikePost(user)){
+            //if image is liked, unlike it
+            //remove user using filter and then removing like and syncing with Parse
+            likes.value = likes.value?.filter { $0 != user}
+            ParseHelper.unlikePost(user, post: self)
+        }
+        else{
+            //append user if not liked, and then add to local cache and sync with Parse
+            likes.value?.append(user)
+            ParseHelper.likePost(user, post: self)
+        }
+    }
 }

@@ -82,6 +82,7 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
     let post = posts[indexPath.row]
     //directly before a post is displayed, we trigger the image download
     post.downloadImage()
+    post.fetchLikes()
     //assigning post to be displayed
     cell.post = post
     
