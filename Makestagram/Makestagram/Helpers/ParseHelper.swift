@@ -33,7 +33,8 @@ class ParseHelper{
     // User Relation
     static let ParseUserUsername      = "username"
     
-    static func timelineRequestforCurrentUser(completionBlock: PFArrayResultBlock){
+    static func timelineRequestforCurrentUser(range: Range<Int>, completionBlock: PFArrayResultBlock){
+       
         let followingQuery = PFQuery(className: ParseFollowClass)
         followingQuery.whereKey(ParseLikeFromUser, equalTo: PFUser.currentUser()!)
         
@@ -50,6 +51,12 @@ class ParseHelper{
         //extracting information to display with the post
         query.includeKey(ParsePostUser)
         query.includeKey(ParsePostCreatedAt)
+        
+        //skip defines how may elements that match our query will be skipped
+        query.skip = range.startIndex
+        
+        //limit defines how many elements do we want to load
+        query.limit = range.endIndex - range.startIndex
         
         query.findObjectsInBackgroundWithBlock(completionBlock)
     
