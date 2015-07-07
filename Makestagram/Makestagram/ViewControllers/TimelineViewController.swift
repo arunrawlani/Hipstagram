@@ -79,9 +79,11 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
     let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
     //return a simple placeholder cell with title Post
     
-    //using postImage property of our custom view class we decide which image to display
-    cell.postImageView.image = posts[indexPath.row].image
-    
+    let post = posts[indexPath.row]
+    //directly before a post is displayed, we trigger the image download
+    post.downloadImage()
+    //assigning post to be displayed
+    cell.post = post
     
     return cell
     }
