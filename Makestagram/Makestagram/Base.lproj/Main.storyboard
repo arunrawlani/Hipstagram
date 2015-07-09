@@ -37,11 +37,83 @@
                     <view key="view" contentMode="scaleToFill" id="43U-te-UL9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="w5R-Q9-dpw">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="lcu-LW-qvY"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="a9Q-o1-1Np" id="09F-Cn-yqv"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6Qe-YQ-q1W">
+                                <rect key="frame" x="0.0" y="64" width="600" height="494"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="50" id="ZCq-ws-n8U" customClass="FriendSearchTableViewCell" customModule="Makestagram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZCq-ws-n8U" id="VIL-SC-KUd">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxG-sa-UKo">
+                                                    <rect key="frame" x="20" y="14" width="472" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21.5" id="Mec-xj-y9M"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNG-GO-6mF">
+                                                    <rect key="frame" x="527" y="4" width="97" height="42"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="UIN-ls-PIT"/>
+                                                        <constraint firstAttribute="width" constant="44" id="iKD-fe-zcm"/>
+                                                    </constraints>
+                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                    <state key="normal" title="Button" image="Add"/>
+                                                    <state key="selected" image="Add"/>
+                                                    <connections>
+                                                        <action selector="followButtonTapped:" destination="ZCq-ws-n8U" eventType="touchUpInside" id="ciB-uO-8ii"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="aNG-GO-6mF" secondAttribute="trailing" constant="8" id="FXC-GE-lB2"/>
+                                                <constraint firstAttribute="centerY" secondItem="LxG-sa-UKo" secondAttribute="centerY" id="WSl-BG-KzK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LxG-sa-UKo" secondAttribute="trailing" constant="100" id="eb2-5P-Mw8"/>
+                                                <constraint firstAttribute="centerY" secondItem="aNG-GO-6mF" secondAttribute="centerY" id="oao-hF-kvX"/>
+                                                <constraint firstItem="LxG-sa-UKo" firstAttribute="leading" secondItem="VIL-SC-KUd" secondAttribute="leadingMargin" constant="12" id="vUJ-gU-Gte"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="followButton" destination="aNG-GO-6mF" id="gkw-nF-HQe"/>
+                                            <outlet property="userNameLabel" destination="LxG-sa-UKo" id="aVF-6s-Y5N"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="a9Q-o1-1Np" id="oF3-11-t1a"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w5R-Q9-dpw" firstAttribute="leading" secondItem="43U-te-UL9" secondAttribute="leading" id="CXI-nR-waf"/>
+                            <constraint firstAttribute="trailing" secondItem="w5R-Q9-dpw" secondAttribute="trailing" id="Lxz-kD-poG"/>
+                            <constraint firstItem="w5R-Q9-dpw" firstAttribute="top" secondItem="aod-hx-O8z" secondAttribute="bottom" id="okc-Pw-tg5"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="People" id="Rav-4X-nfL">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="searchBar" destination="w5R-Q9-dpw" id="5r1-dB-O2a"/>
+                        <outlet property="tableView" destination="6Qe-YQ-q1W" id="hX3-4w-p5N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01R-c0-J0C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,6 +264,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add" width="42" height="42"/>
         <image name="Camera" width="40" height="30"/>
         <image name="Heart" width="72" height="68"/>
         <image name="Heart-Selected" width="72" height="68"/>
