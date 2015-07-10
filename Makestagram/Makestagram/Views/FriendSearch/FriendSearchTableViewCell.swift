@@ -26,9 +26,17 @@ class FriendSearchTableViewCell: UITableViewCell{
         }
     }
     
-    
+    var canFollow: Bool? = true {
+        didSet{
+            /*Change state of follow button depending whether it is possible to follow a user or not*/
+            if let canFollow = canFollow{
+                followButton.selected = !canFollow
+            }
+        }
+    }
     
     @IBAction func followButtonTapped (sender: AnyObject){
-        
+        if let canFollow = canFollow where canFollow == true
+        delegate?.cell(self, didSelectUnfollowUser: user!)
         }
     }
