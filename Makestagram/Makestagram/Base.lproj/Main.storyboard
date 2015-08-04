@@ -48,7 +48,7 @@
                                     <outlet property="delegate" destination="a9Q-o1-1Np" id="09F-Cn-yqv"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6Qe-YQ-q1W">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6Qe-YQ-q1W">
                                 <rect key="frame" x="0.0" y="64" width="600" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -64,11 +64,11 @@
                                                         <constraint firstAttribute="height" constant="21.5" id="Mec-xj-y9M"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNG-GO-6mF">
-                                                    <rect key="frame" x="527" y="4" width="97" height="42"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNG-GO-6mF">
+                                                    <rect key="frame" x="540" y="3" width="44" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="UIN-ls-PIT"/>
                                                         <constraint firstAttribute="width" constant="44" id="iKD-fe-zcm"/>
@@ -104,7 +104,11 @@
                         <constraints>
                             <constraint firstItem="w5R-Q9-dpw" firstAttribute="leading" secondItem="43U-te-UL9" secondAttribute="leading" id="CXI-nR-waf"/>
                             <constraint firstAttribute="trailing" secondItem="w5R-Q9-dpw" secondAttribute="trailing" id="Lxz-kD-poG"/>
+                            <constraint firstAttribute="bottom" secondItem="6Qe-YQ-q1W" secondAttribute="bottom" constant="42" id="USX-n9-vU2"/>
+                            <constraint firstItem="6Qe-YQ-q1W" firstAttribute="top" secondItem="w5R-Q9-dpw" secondAttribute="bottom" id="YVf-ay-uKA"/>
+                            <constraint firstItem="6Qe-YQ-q1W" firstAttribute="leading" secondItem="43U-te-UL9" secondAttribute="leading" id="cN8-0f-fuE"/>
                             <constraint firstItem="w5R-Q9-dpw" firstAttribute="top" secondItem="aod-hx-O8z" secondAttribute="bottom" id="okc-Pw-tg5"/>
+                            <constraint firstAttribute="trailing" secondItem="6Qe-YQ-q1W" secondAttribute="trailing" id="wLj-69-2o1"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="People" id="Rav-4X-nfL">

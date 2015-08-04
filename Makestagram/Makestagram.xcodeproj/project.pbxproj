@@ -43,6 +43,7 @@
 		62C8C1ED1B06BD6500DC3EA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62C8C1EC1B06BD6500DC3EA7 /* Images.xcassets */; };
 		62C8C1F01B06BD6500DC3EA7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C8C1EE1B06BD6500DC3EA7 /* LaunchScreen.xib */; };
 		62C8C1FC1B06BD6500DC3EA7 /* MakestagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8C1FB1B06BD6500DC3EA7 /* MakestagramTests.swift */; };
+		F139A4471B5EBD1C006F7CC7 /* Sinch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F139A4461B5EBD1C006F7CC7 /* Sinch.framework */; };
 		F1401BBF1B45E93000233D38 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1401BBE1B45E93000233D38 /* Post.swift */; };
 		F180906D1B4A1B3C00D909A1 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F180906C1B4A1B3C00D909A1 /* PostTableViewCell.swift */; };
 		F180906F1B4A766200D909A1 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F180906E1B4A766200D909A1 /* ParseHelper.swift */; };
@@ -189,6 +190,7 @@
 		62C8C1F51B06BD6500DC3EA7 /* MakestagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MakestagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C8C1FA1B06BD6500DC3EA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62C8C1FB1B06BD6500DC3EA7 /* MakestagramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakestagramTests.swift; sourceTree = "<group>"; };
+		F139A4461B5EBD1C006F7CC7 /* Sinch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sinch.framework; sourceTree = "<group>"; };
 		F1401BBE1B45E93000233D38 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F180906C1B4A1B3C00D909A1 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		F180906E1B4A766200D909A1 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				62551B9E1B06C354000913E4 /* MobileCoreServices.framework in Frameworks */,
 				62551B9C1B06C327000913E4 /* SystemConfiguration.framework in Frameworks */,
 				62551B9A1B06C31F000913E4 /* CoreLocation.framework in Frameworks */,
+				F139A4471B5EBD1C006F7CC7 /* Sinch.framework in Frameworks */,
 				62551B981B06C2FD000913E4 /* Accounts.framework in Frameworks */,
 				62551B961B06C2F5000913E4 /* Social.framework in Frameworks */,
 				62551B941B06C072000913E4 /* ConvenienceKit.framework in Frameworks */,
@@ -240,6 +243,7 @@
 			children = (
 				62A07D651B1F79F2001F6916 /* libstdc++.6.dylib */,
 				62551BA11B06C373000913E4 /* libsqlite3.dylib */,
+				F139A4461B5EBD1C006F7CC7 /* Sinch.framework */,
 				62551B9F1B06C35B000913E4 /* AudioToolbox.framework */,
 				62551B9D1B06C354000913E4 /* MobileCoreServices.framework */,
 				62551B9B1B06C327000913E4 /* SystemConfiguration.framework */,
@@ -766,6 +770,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Frameworks/ConvenienceKit/ConvenienceKit/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Makestagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -785,6 +790,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Frameworks/ConvenienceKit/ConvenienceKit/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Makestagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

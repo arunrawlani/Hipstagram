@@ -8,6 +8,8 @@
 //
 
 import UIKit
+import SINClient
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

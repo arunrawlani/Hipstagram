@@ -207,6 +207,8 @@ class ParseHelper{
         return query
         
     }
+    
+    
 }
 
 extension PFObject: Equatable{
